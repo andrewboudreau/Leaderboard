@@ -14,7 +14,6 @@ Development Notes
 - create azure service
 - create project from scratch
 - upgrade all nuget projects
-- 
 
 Data Project
 ============
