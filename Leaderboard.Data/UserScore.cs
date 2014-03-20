@@ -13,6 +13,8 @@ namespace Leaderboard.Data
 
         public virtual int Id { get; set; }
 
+        public virtual int UserId { get; set; }
+
         public virtual User User { get; set; }
 
         public virtual int Score { get; set; }

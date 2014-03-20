@@ -12,7 +12,7 @@ using Leaderboard.Data;
 
 namespace Leaderboard.Web.Controllers
 {
-    public class Default1Controller : ApiController
+    public class LeaderboardController : ApiController
     {
         private LeaderboardContext db = new LeaderboardContext();
 
