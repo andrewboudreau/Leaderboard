@@ -6,6 +6,8 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using System.Data.Entity;
+using Leaderboard.Data;
 
 namespace Leaderboard.Web
 {
@@ -13,6 +15,9 @@ namespace Leaderboard.Web
     {
         protected void Application_Start()
         {
+
+            Database.SetInitializer(new DropCreateDatabaseIfModelChanges<LeaderboardContext>());
+
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
