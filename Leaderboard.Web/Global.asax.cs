@@ -9,6 +9,8 @@ using System.Web.Routing;
 using System.Data.Entity;
 using Leaderboard.Data;
 
+using Newtonsoft.Json;
+
 namespace Leaderboard.Web
 {
     public class WebApiApplication : System.Web.HttpApplication
@@ -23,6 +25,8 @@ namespace Leaderboard.Web
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            GlobalConfiguration.Configure(c => c.Formatters.JsonFormatter.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
         }
     }
 }

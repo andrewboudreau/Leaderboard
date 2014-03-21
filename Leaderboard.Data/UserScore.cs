@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace Leaderboard.Data
 {
@@ -13,10 +14,10 @@ namespace Leaderboard.Data
 
         public virtual int Id { get; set; }
 
-        public virtual int UserId { get; set; }
+        [Required]
+        public virtual string UserName { get; set; }
 
-        public virtual User User { get; set; }
-
+        [Required]
         public virtual int Score { get; set; }
 
         public virtual DateTime Created

@@ -48,9 +48,7 @@
   <ItemGroup>
     <Compile Include="ILeaderboardContext.cs" />
     <Compile Include="LeaderboardContext.cs" />
-    <Compile Include="LeaderboardQueries.cs" />
     <Compile Include="UserScore.cs" />
-    <Compile Include="User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

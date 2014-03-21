@@ -7,8 +7,6 @@ namespace Leaderboard.Data
 
     public class LeaderboardContext : DbContext, ILeaderboardContext
     {
-        public DbSet<User> Users { get; set; }
-
         public DbSet<UserScore> UserScores { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

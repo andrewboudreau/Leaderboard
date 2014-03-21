@@ -59,7 +59,6 @@
   <ItemGroup>
     <Compile Include="AssemblyInitializeTest.cs" />
     <Compile Include="UserScoreTests.cs" />
-    <Compile Include="UserTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

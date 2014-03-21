@@ -9,61 +9,47 @@ namespace Leaderboard.Data.Test
     public class UserScoreTests
     {
         [TestMethod]
-        public void CreateUserAddScore()
+        public void CreateScore()
         {
-            int userId;
+            int scoreID;
+            string name;
             using (var context = new LeaderboardContext())
             {
-                var user = context.Users.Create();
-                context.Users.Add(user);
-                user.Name = Guid.NewGuid().ToString();
-
                 var score = context.UserScores.Create();
                 context.UserScores.Add(score);
                 score.Score = 10;
-                score.User = user;
+                score.UserName = "Name" + Guid.NewGuid();
                 score.Created = DateTime.UtcNow;
 
                 context.SaveChanges();
-
-                userId = user.Id;
+                
+                name = score.UserName;
+                scoreID = score.Id;
             }
 
             using (var context = new LeaderboardContext())
             {
-                var user = context.Users.Single(u => u.Id == userId);
+                var userScore = context.UserScores.Single(s => s.Id == scoreID);
 
-                Assert.AreEqual(userId, user.Id);
-                Assert.AreEqual(1, user.Scores.Count(), "User should have 1 score");
-                Assert.AreEqual(10, user.Scores.Single().Score, "User should have a score of 10");
+                Assert.AreEqual(scoreID, userScore.Id);
+                Assert.AreEqual(name, userScore.UserName);
+                Assert.AreEqual(10, userScore.Score, "User should have a score of 10");
             }
         }
 
         [TestMethod]
-        public void CreateUserAddMultipleScores()
+        public void CreateMultipleScores()
         {
-            int userId;
-            using (var context = new LeaderboardContext())
-            {
-                var user = context.Users.Create();
-                context.Users.Add(user);
-                user.Name = Guid.NewGuid().ToString();
-
-                context.SaveChanges();
-
-                userId = user.Id;
-            }
+            var username = "name" + Guid.NewGuid();
 
             using (var context = new LeaderboardContext())
             {
-                var user = context.Users.Single(u => u.Id == userId);
-
                 for (var i = 0; i < 10; i++)
                 {
                     var score = context.UserScores.Create();
                     context.UserScores.Add(score);
                     score.Score = i;
-                    score.User = user;
+                    score.UserName = username;
                     score.Created = DateTime.UtcNow;
                 }
 
@@ -72,14 +58,13 @@ namespace Leaderboard.Data.Test
 
             using (var context = new LeaderboardContext())
             {
-                var user = context.Users.Single(u => u.Id == userId);
+                var scores = context.UserScores.Where(s => s.UserName == username).ToList();
 
-                Assert.AreEqual(userId, user.Id);
-                Assert.AreEqual(10, user.Scores.Count(), "User should have 10 score");
+                Assert.AreEqual(10, scores.Count(), "User should have 10 score");
 
                 for (var i = 0; i < 10; i++)
                 {
-                    Assert.AreEqual(i, user.Scores.ElementAt(i).Score, "User score should match index");
+                    Assert.AreEqual(i, scores.ElementAt(i).Score, "User score should match index");
                 }
             }
         }
