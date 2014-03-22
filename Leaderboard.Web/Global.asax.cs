@@ -19,7 +19,7 @@ namespace Leaderboard.Web
         {
 
             Database.SetInitializer(new DropCreateDatabaseIfModelChanges<LeaderboardContext>());
-
+            
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);

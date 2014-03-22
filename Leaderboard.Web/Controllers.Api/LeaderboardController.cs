@@ -3,9 +3,13 @@ using System.Web.Http;
 using System.Web.Http.Description;
 
 using Leaderboard.Data;
+using System.Web.Http.Cors;
 
 namespace Leaderboard.Web.Controllers.Api
 {
+    
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
+    [Authorize]
     public class LeaderboardController : ApiController
     {
         private LeaderboardContext db = new LeaderboardContext();
