@@ -154,3 +154,5 @@ $RECYCLE.BIN/
 
 # Mac desktop service store files
 .DS_Store
+Leaderboard.Web/App_Data/Leaderboard.Data.LeaderboardContext_log.ldf
+Leaderboard.Web/App_Data/Leaderboard.Data.LeaderboardContext.mdf
