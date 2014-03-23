@@ -12,11 +12,7 @@ namespace Leaderboard.Web
             System.Web.Optimization.BundleTable.EnableOptimizations = false;
 
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                       "~/Scripts/jquery-{version}.js",
-                       "~/Scripts/knockout-{version}.js",
-                       "~/Scripts/ajaxPrefilters.js",
-                       "~/Scripts/app.datamodel.js",
-                       "~/Scripts/app.viewmodel.js"
+                       "~/Scripts/jquery-{version}.js"
                        ));
 
 
