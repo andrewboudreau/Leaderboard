@@ -224,9 +224,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
-    <Content Include="Scripts\ajaxPrefilters.js" />
-    <Content Include="Scripts\app.datamodel.js" />
-    <Content Include="Scripts\app.viewmodel.js" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
