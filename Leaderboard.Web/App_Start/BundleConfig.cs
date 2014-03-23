@@ -13,6 +13,7 @@ namespace Leaderboard.Web
 
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                        "~/Scripts/jquery-{version}.js",
+                       "~/Scripts/knockout-{version}.js",
                        "~/Scripts/ajaxPrefilters.js",
                        "~/Scripts/app.datamodel.js",
                        "~/Scripts/app.viewmodel.js"

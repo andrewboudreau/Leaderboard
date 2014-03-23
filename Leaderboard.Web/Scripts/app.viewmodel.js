@@ -68,18 +68,18 @@
         Loading: {} // Other views are added dynamically by app.addViewModel(...).
     };
 
-    //// UI state
-    //self.errors = ko.observableArray();
-    //self.user = ko.observable(null);
-    //self.view = ko.observable(self.Views.Loading);
+    // UI state
+    self.errors = ko.observableArray();
+    self.user = ko.observable(null);
+    self.view = ko.observable(self.Views.Loading);
 
-    //self.loading = ko.computed(function () {
-    //    return self.view() === self.Views.Loading;
-    //});
+    self.loading = ko.computed(function () {
+        return self.view() === self.Views.Loading;
+    });
 
-    //self.loggedIn = ko.computed(function () {
-    //    return self.user() !== null;
-    //});
+    self.loggedIn = ko.computed(function () {
+        return self.user() !== null;
+    });
 
     // UI operations
     self.archiveSessionStorageToLocalStorage = function () {
