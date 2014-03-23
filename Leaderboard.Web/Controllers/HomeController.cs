@@ -10,7 +10,7 @@ namespace Leaderboard.Web.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.Title = "Home Page";
+            ViewBag.Title = "Leaderboard Services";
 
             return View();
         }
