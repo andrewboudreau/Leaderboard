@@ -35,8 +35,6 @@ namespace Leaderboard.SecureWeb.Providers
 
         public override async Task GrantResourceOwnerCredentials(OAuthGrantResourceOwnerCredentialsContext context)
         {
-            context.OwinContext.Response.Headers.Add("Access-Control-Allow-Origin", new[] { "*" });
-
             using (UserManager<IdentityUser> userManager = this.userManagerFactory())
             {
                 IdentityUser user = await userManager.FindAsync(context.UserName, context.Password);
