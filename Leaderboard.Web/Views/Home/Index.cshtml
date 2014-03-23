@@ -18,12 +18,11 @@
         <button id="getMyScores" class="btn btn-success">Get My Scores</button>
     </div>
 
-    <form id="submitScoreData" class="form-inline">
-        <div class="form-group">
-            <input type="text" name="score" placeholder="Score" class="form-control" />
-            <button id="submitScore" class="btn btn-success">Submit Score</button>
-        </div>
-    </form>
+    <div class="form-group">
+        <button id="submitScore" class="btn btn-success" style="display:inline-block;">Submit Score</button>
+        <input type="text" name="score" id="score" placeholder="Score" class="form-control score-input" value="10" />
+        <div class="clearfix"></div>
+    </div>
 
     <h4>Output Window</h4>
     <pre id="output"></pre>
@@ -53,12 +52,16 @@
             };
 
             var submitScore = function () {
-                var url = "/api/leaderboard/submit";
+                var url = "/api/leaderboard";
+                var data = { score: $("#score").val() };
+
+                console.log(data);
                 $.ajax(url, {
                     type: "POST",
-                    headers: getHeaders(),
-                    //contentType: "application/json",
-                    data: $("#submitScoreData").serialize()
+                    contentType: "application/json; charset=utf-8",
+                    cache: false,
+                    headers: getHeaders(),                    
+                    data: JSON.stringify(data)
                 }).always(showResponse);
                 return false;
             };
@@ -71,9 +74,7 @@
             };
 
             var showResponse = function (object) {
-
                 $("#output").text(JSON.stringify(object, null, 4));
-
             };
 
             var register = function () {

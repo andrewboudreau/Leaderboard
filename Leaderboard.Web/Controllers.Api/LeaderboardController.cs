@@ -5,10 +5,10 @@ using System.Web.Http.Description;
 using Leaderboard.Data;
 using System.Web.Http.Cors;
 using System.Data.Entity.Core.Objects;
+using System;
 
 namespace Leaderboard.Web.Controllers.Api
 {
-    
     public class LeaderboardController : ApiController
     {
         private LeaderboardContext db = new LeaderboardContext();
@@ -22,7 +22,8 @@ namespace Leaderboard.Web.Controllers.Api
         [Route("api/Leaderboard/MyScores")]
         public IHttpActionResult GetMyScores()
         {
-            var userscore = this.db.UserScores.Where(s => s.UserName == User.Identity.Name).ToArray();
+            var username = User.Identity.Name ?? "anonymous";
+            var userscore = this.db.UserScores.Where(s => s.UserName == username).ToArray();
             if (userscore == null)
             {
                 return this.NotFound();
@@ -31,8 +32,9 @@ namespace Leaderboard.Web.Controllers.Api
             return this.Ok(userscore);
         }
 
+        [HttpPost]
         [ResponseType(typeof(UserScore))]
-        public IHttpActionResult PostUserScore([FromBody] int score)
+        public IHttpActionResult PostUserScore(UserScore score)
         {
             if (!this.ModelState.IsValid)
             {
@@ -40,12 +42,20 @@ namespace Leaderboard.Web.Controllers.Api
             }
 
             var userscore = this.db.UserScores.Create();
-            userscore.UserName = User.Identity.Name ?? string.Empty;
-            userscore.Score = score;
+            userscore.UserName = User.Identity.Name ?? "anonymous";
+            userscore.Score = score.Score;
             this.db.UserScores.Add(userscore);
-            this.db.SaveChanges();
+            try
+            {
+                this.db.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                var a = ex;
+                throw;
+            }
 
-            return this.Created(this.Request.RequestUri.AbsoluteUri, userscore);
+            return this.CreatedAtRoute("DefaultApi", new { }, userscore);
         }
 
         protected override void Dispose(bool disposing)

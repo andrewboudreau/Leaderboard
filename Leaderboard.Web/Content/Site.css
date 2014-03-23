@@ -40,3 +40,9 @@ input[type="checkbox"].input-validation-error {
 .validation-summary-valid {
     display: none;
 }
+
+.score-input {
+    width:75px; 
+    display:inline-block; 
+    margin-right:20px;
+}

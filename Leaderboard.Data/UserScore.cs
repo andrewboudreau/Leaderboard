@@ -14,7 +14,6 @@ namespace Leaderboard.Data
 
         public virtual int Id { get; set; }
 
-        [Required]
         public virtual string UserName { get; set; }
 
         [Required]
