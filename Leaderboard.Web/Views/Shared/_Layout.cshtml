@@ -21,7 +21,7 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a style="color:pink" target="_blank" id="kurlit" href="https://kurl.it/kurls/list">KURL.IT Suite</a></li>
+                    <li><a class="kurlit" target="_blank" href="https://kurl.it/kurls/list">KURL.IT Suite</a></li>
                     <li>@Html.ActionLink("API Documentation", "Index", "Help", new { area = "" }, null)</li>
                 </ul>
             </div>
@@ -38,7 +38,7 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     <script>
-        $("#kurlit").click(function () {
+        $(".kurlit").click(function () {
             alert("Login to kurl.it using the given credentials \r\nLogin: leaderboard \r\nPassword: leaderboard")
         })
     </script>

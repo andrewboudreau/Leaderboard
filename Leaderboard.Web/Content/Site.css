@@ -46,3 +46,7 @@ input[type="checkbox"].input-validation-error {
     display:inline-block; 
     margin-right:20px;
 }
+
+.kurlit {
+    text-decoration:underline;
+}

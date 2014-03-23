@@ -1,16 +1,18 @@
 ﻿<div class="jumbotron">
-    <h1>Leaderboard.Web</h1>
+    <h1>Leaderboard.Web</h1> 
+    <p> You <strong>ARE NOT REQUIRED</strong> to use an account to read/write scores. 
+    Any commands performed will not authenticated defaults to an 'anonymous' user. Get started by using the <button disabled class="btn btn-success">COMMAND BUTTONS</button> below. For additional examples please visit the <a target="_blank" class="kurlit" href="https://kurl.it/kurls/list">KURL.IT Suite</a></p>
 
-    <h4>Auth Request</h4>
+    <hr />
+    <h2>Auth Request</h2>
     <form id="userData" class="form-inline">
-        <input type="text" name="userName" placeholder="Name" class="form-control" value="Andrew" />
-        <input type="password" name="password" placeholder="Password" class="form-control" value="Andrew" />
-        <input type="password" name="confirmPassword" placeholder="Password" class="form-control" value="Andrew" />
+        <input type="text" name="userName" placeholder="Name" class="form-control" value="" />
+        <input type="password" name="password" placeholder="Password" class="form-control" value="" />
+        <input type="password" name="confirmPassword" placeholder="Password" class="form-control" value="" />
         <input type="submit" id="login" value="Login" class="btn btn-primary" />
         <input type="submit" id="register" value="Register" class="btn btn-default" />
     </form>
-
-    <h4>Commands</h4>
+    <h2>Commands</h2>
     <div class="form-group">
         <button id="getScores" class="btn btn-success">Get Scores</button>
     </div>
@@ -24,7 +26,7 @@
         <div class="clearfix"></div>
     </div>
 
-    <h4>Output Window</h4>
+    <h4><i class="icon icon-lock"></i>Output Window</h4>
     <pre id="output"></pre>
 </div>
 
