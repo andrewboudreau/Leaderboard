@@ -4,12 +4,11 @@ using System.Web.Http.Description;
 
 using Leaderboard.Data;
 using System.Web.Http.Cors;
+using System.Data.Entity.Core.Objects;
 
 namespace Leaderboard.Web.Controllers.Api
 {
-
-    [Authorize]
-    [EnableCors(origins: "*", headers: "*", methods: "*")]
+    
     public class LeaderboardController : ApiController
     {
         private LeaderboardContext db = new LeaderboardContext();
@@ -19,10 +18,11 @@ namespace Leaderboard.Web.Controllers.Api
             return this.db.UserScores;
         }
 
-        [ResponseType(typeof(UserScore))]
-        public IHttpActionResult GetUserScore(int id)
+        [ResponseType(typeof(UserScore[]))]
+        [Route("api/Leaderboard/MyScores")]
+        public IHttpActionResult GetMyScores()
         {
-            UserScore userscore = this.db.UserScores.Find(id);
+            var userscore = this.db.UserScores.Where(s => s.UserName == User.Identity.Name).ToArray();
             if (userscore == null)
             {
                 return this.NotFound();
@@ -32,17 +32,20 @@ namespace Leaderboard.Web.Controllers.Api
         }
 
         [ResponseType(typeof(UserScore))]
-        public IHttpActionResult PostUserScore(UserScore userscore)
+        public IHttpActionResult PostUserScore([FromBody] int score)
         {
             if (!this.ModelState.IsValid)
             {
                 return this.BadRequest(this.ModelState);
             }
 
+            var userscore = this.db.UserScores.Create();
+            userscore.UserName = User.Identity.Name ?? string.Empty;
+            userscore.Score = score;
             this.db.UserScores.Add(userscore);
             this.db.SaveChanges();
 
-            return this.CreatedAtRoute("DefaultApi", new { id = userscore.Id }, userscore);
+            return this.Created(this.Request.RequestUri.AbsoluteUri, userscore);
         }
 
         protected override void Dispose(bool disposing)

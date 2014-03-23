@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="ILeaderboardContext.cs" />
     <Compile Include="LeaderboardContext.cs" />
+    <Compile Include="LeaderboardContextSeed.cs" />
     <Compile Include="UserScore.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
