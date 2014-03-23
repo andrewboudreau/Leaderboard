@@ -7,9 +7,9 @@ using System.Web.Http.Cors;
 
 namespace Leaderboard.Web.Controllers.Api
 {
-    
-    [EnableCors(origins: "*", headers: "*", methods: "*")]
+
     [Authorize]
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class LeaderboardController : ApiController
     {
         private LeaderboardContext db = new LeaderboardContext();

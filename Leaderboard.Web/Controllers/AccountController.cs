@@ -19,7 +19,6 @@ using Leaderboard.SecureWeb.Results;
 
 namespace Leaderboard.SecureWeb.Controllers
 {
-    [Authorize]
     [RoutePrefix("api/Account")]
     public class AccountController : ApiController
     {
