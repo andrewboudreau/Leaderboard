@@ -1,25 +1,14 @@
-﻿@model ILookup<string, Leaderboard.Data.UserScore>
+﻿@model Tuple<string, int>
 
 <div class="jumbotron">
     <h1>Leaderboard</h1>
-    <table class="table">
-        @{int i = 1;}
-        @foreach (var item in Model)
-        {
-            <ul>
-                <li>@item.Key</li>
-                <li>
-                    <ul>
-                        @foreach (var score in item)
-                        {
-                            <li>@score.Score</li>
-                        }
-                    </ul>
-                </li>
-            </ul>
-
-        }
-    </table>
+    @{int i = 1;}
+    @foreach (var item in Model)
+    {
+        <ul class="list-group">
+            <li class="list-group-item">@item.Item1 - @item.Item2</li>
+        </ul>
+    }
 </div>
 
 @section Scripts{
