@@ -42,11 +42,22 @@ input[type="checkbox"].input-validation-error {
 }
 
 .score-input {
-    width:75px; 
-    display:inline-block; 
-    margin-right:20px;
+    width: 75px;
+    display: inline-block;
+    margin-right: 20px;
 }
 
 .kurlit {
-    text-decoration:underline;
+    text-decoration: underline;
+}
+
+#loading {
+    border-radius: 10px;
+    position: absolute;
+    background-color: white;
+    border: 1px solid grey;
+    margin: 40px;
+    padding: 10px;
+    font-weight: 700;
+    box-shadow: 5px 5px 5px #888888;
 }

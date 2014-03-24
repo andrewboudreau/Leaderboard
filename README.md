@@ -24,5 +24,9 @@ Data Project
 - Integration Tests
 - Profile
 
-
-	
+Azure Feature Mentions
+=====================
+- Portal 
+	- Makes IT accessible for developers
+	- Wealthy dashboard
+	- 
