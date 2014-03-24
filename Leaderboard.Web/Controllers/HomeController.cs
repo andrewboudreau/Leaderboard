@@ -1,4 +1,5 @@
 ﻿using Leaderboard.Data;
+using Leaderboard.Web.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,9 +23,12 @@ namespace Leaderboard.Web.Controllers
             ViewBag.Title = "Leaderboard Screen";
             var scores = this.db.UserScores
                 .GroupBy(m => m.UserName)
-                .ToList()
-                .Select(l => new Tuple<string, int>(l.Key, l.Max(x => x.Score)))
-                .OrderByDescending(s => s.Item2)
+                .Select(grp => new UserScoreModel { 
+                    UserName = grp.Key, 
+                    Score = grp.Max(x => x.Score), 
+                    Created = grp.Where(x => x.Score == grp.Max(z => z.Score)).FirstOrDefault().Created 
+                })
+                .OrderByDescending(s => s.Score)
                 .ToList();
 
             return View(scores);
@@ -45,5 +49,7 @@ namespace Leaderboard.Web.Controllers
 
             base.Dispose(disposing);
         }
+
+
     }
 }

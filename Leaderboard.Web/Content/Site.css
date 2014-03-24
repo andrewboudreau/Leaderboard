@@ -61,3 +61,15 @@ input[type="checkbox"].input-validation-error {
     font-weight: 700;
     box-shadow: 5px 5px 5px #888888;
 }
+
+.leaderboard {
+    font-weight:bolder;
+    font-size: xx-large;
+}
+.leaderboard .place {
+    margin-right:20px;
+}
+
+.leaderboard .subtext {
+    font-size:medium;
+}
