@@ -13,7 +13,7 @@ using System.Web;
 namespace Leaderboard.Web.DelegatingHandlers
 {    
     /// <summary>
-    /// Message handler that allows HTTP Method overrides to suppose clients that don't support PUT,DELETE
+    /// Message handler that allows HTTP Method overrides to support clients that don't support PUT,DELETE
     /// </summary>
     public class XHttpMethodOverrideDelegatingHandler : DelegatingHandler
     {

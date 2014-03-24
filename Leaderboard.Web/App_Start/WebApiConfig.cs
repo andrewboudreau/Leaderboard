@@ -29,7 +29,7 @@ namespace Leaderboard.Web
             // http://www.asp.net/web-api/overview/web-api-routing-and-actions
             config.MapHttpAttributeRoutes();
 
-            // Enable CORS
+            // Enable CORS (Cross-Origin Resource Sharing) 
             // http://www.asp.net/web-api/overview/security/enabling-cross-origin-requests-in-web-api
             var cors = new EnableCorsAttribute(origins: "*", headers: "*", methods: "*");
             config.EnableCors();

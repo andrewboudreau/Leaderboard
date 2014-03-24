@@ -3,19 +3,17 @@
 
 <div class="jumbotron">
     <h1>Leaderboard</h1>
-    @{int i = 1;}
-
     @foreach (var scoreHandle in Model.Select((item, index) => new { item, index }))
     {
         <ul class="list-group leaderboard">
-            <li class="list-group-item"><span class="place">@(scoreHandle.index + 1)</span> @scoreHandle.item.UserName <span class="subtext">@scoreHandle.item.Created.ToLocalTime().InWords()</span><span class="pull-right">@scoreHandle.item.Score</span></li>
+            <li class="list-group-item"><span class="place">@(scoreHandle.index + 1)</span> @scoreHandle.item.UserName <span class="subtext">@scoreHandle.item.Created.ToLocalTime().InWords()</span><span class="pull-right">@scoreHandle.item.Score</span><span class="clearfix"></span></li>
         </ul>
     }
 </div>
 
 @section Scripts{
-    <script>
-
+    <script type="text/javascript">
+        setInterval('window.location.reload()', 60000);
     </script>
 }
 
