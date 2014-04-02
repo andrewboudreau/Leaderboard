@@ -26,7 +26,7 @@ namespace Leaderboard.Web.Controllers
                 .Select(grp => new UserScoreModel { 
                     UserName = grp.Key, 
                     Score = grp.Max(x => x.Score), 
-                    Created = grp.Where(x => x.Score == grp.Max(z => z.Score)).FirstOrDefault().Created 
+                    Created = grp.FirstOrDefault(x => x.Score == grp.Max(z => z.Score)).Created 
                 })
                 .OrderByDescending(s => s.Score)
                 .ToList();
