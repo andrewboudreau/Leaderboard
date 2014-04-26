@@ -35,6 +35,25 @@ public class DemoScene : MonoBehaviour
 		GamePlay();
 		RunInput();
 	}
+
+	void OnGUI()
+	{
+		if(GUI.Button(new Rect(20,11,100,20),  "Leaderboard"))
+		{
+			LeaderboardDisplay display = this.GetComponent<LeaderboardDisplay>();
+			if(display != null)
+			{
+				if(display.Displayed)
+				{
+					display.Hide();
+				}
+				else
+				{
+					display.GetLeaderboardData();
+				}
+			}
+		} 
+	}
 	
 	private void GamePlay()
 	{

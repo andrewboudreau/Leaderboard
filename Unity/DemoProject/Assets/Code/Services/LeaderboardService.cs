@@ -2,11 +2,24 @@ using System;
 using UnityEngine;
 using Demo.Services.DataContracts;
 using LitJson;
+using System.Collections.Generic;
 
 namespace Demo.Services
 {
 	public class LeaderboardService : ServiceBase
 	{
+		public static bool Authenticated
+		{
+			get
+			{
+				if(!String.IsNullOrEmpty(userToken))
+				{
+					return true;
+				}
+				return false;
+			}
+		}
+
 		private static string userToken = null;
 
 		//In practice we wouldnt want this callback to be static, so we could make parallel service calls, but it works for this simple example.
@@ -58,11 +71,37 @@ namespace Demo.Services
 			AuthResponse authResponse = JsonMapper.ToObject<AuthResponse>(response.text);
 
 			//Lets set the user token globally
-			userToken = authResponse.access_token;
+			LeaderboardService.userToken = authResponse.access_token;
 
 			if(callback != null)
 			{
 				callback(authResponse);
+			}
+		}
+
+		public void GetLeaderboard(System.Action<object> callback)
+		{
+			LeaderboardService.callback = callback;
+
+			string url = "http://leaderboard-web.azurewebsites.net/api/leaderboard";
+
+			RequestAsync(url, "{}", userToken, HttpVerb.GET, GetLeaderboardResponse); 
+		}
+
+
+		private void GetLeaderboardResponse(object obj)
+		{
+			WWW response = (WWW)obj;
+
+			string json = response.text;
+
+			AllScoresResponse scoresResp = new AllScoresResponse();
+			List<UserScore> scores = JsonMapper.ToObject<List<UserScore>>(json);
+			scoresResp.Scores = scores;
+
+			if(callback != null)
+			{
+				callback(scoresResp);
 			}
 		}
 	}

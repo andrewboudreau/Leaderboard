@@ -10,14 +10,14 @@ using System.Text;
 /// </summary>
 public class WWWBlocking : MonoBehaviour 
 {
-	void Update () 
+	void OnGUI()
 	{
-		if(Input.GetKeyUp(KeyCode.Space))
+		if(GUI.Button(new Rect(20,40,150,20),  "Blocking Service Call"))
 		{
 			AuthBlocking();
 		}
 	}
-	
+
 	private void AuthBlocking()
 	{
 		string userName = "test";

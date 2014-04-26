@@ -8,9 +8,9 @@ using System.Text;
 /// </summary>
 public class WWWAsync : MonoBehaviour 
 {	
-	void Update () 
+	void OnGUI()
 	{
-		if(Input.GetKeyUp(KeyCode.Space))
+		if(GUI.Button(new Rect(20,70,150,20),  "Async Service Call"))
 		{
 			AuthAsync();
 		}

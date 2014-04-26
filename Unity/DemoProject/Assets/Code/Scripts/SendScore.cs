@@ -6,16 +6,21 @@ using System;
 
 public class SendScore : MonoBehaviour 
 {
-	void Update () 
+	void OnGUI()
 	{
-		if(Input.GetKeyUp(KeyCode.Space))
+		if(GUI.Button(new Rect(20,100,150,20),  "Send Score"))
 		{
-			DemoScene scene = this.gameObject.GetComponent<DemoScene>();
-			int score = scene.score;
-			
-			//send the current score of the game
-			SendGameScore(score);
+			SaveScore();
 		}
+	}
+
+	private void SaveScore()
+	{
+		DemoScene scene = this.gameObject.GetComponent<DemoScene>();
+		int score = scene.score;
+		
+		//send the current score of the game
+		SendGameScore(score);
 	}
 	
 	private void SendGameScore(int score)
