@@ -3,9 +3,6 @@ using System.Web.Http;
 using System.Web.Http.Description;
 
 using Leaderboard.Data;
-using System.Web.Http.Cors;
-using System.Data.Entity.Core.Objects;
-using System;
 
 namespace Leaderboard.Web.Controllers.Api
 {
@@ -24,10 +21,6 @@ namespace Leaderboard.Web.Controllers.Api
         {
             var username = User.Identity.Name ?? "anonymous";
             var userscore = this.db.UserScores.Where(s => s.UserName == username).ToArray();
-            if (userscore == null)
-            {
-                return this.NotFound();
-            }
 
             return this.Ok(userscore);
         }
@@ -45,15 +38,8 @@ namespace Leaderboard.Web.Controllers.Api
             userscore.UserName = User.Identity.Name ?? "anonymous";
             userscore.Score = score.Score;
             this.db.UserScores.Add(userscore);
-            try
-            {
-                this.db.SaveChanges();
-            }
-            catch (Exception ex)
-            {
-                var a = ex;
-                throw;
-            }
+
+            this.db.SaveChanges();
 
             return this.CreatedAtRoute("DefaultApi", new { }, userscore);
         }
