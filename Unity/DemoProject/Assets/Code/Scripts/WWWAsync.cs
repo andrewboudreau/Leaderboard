@@ -18,8 +18,8 @@ public class WWWAsync : MonoBehaviour
 	
 	private void AuthAsync()
 	{
-		string userName = "test";
-		string password = "test123";
+		string userName = DemoScene.userName;
+		string password = DemoScene.password;
 		
 		string url = "http://leaderboard-web.azurewebsites.net/Token";
 		string message = String.Format("userName={0}&password={1}&grant_type=password", userName, password);

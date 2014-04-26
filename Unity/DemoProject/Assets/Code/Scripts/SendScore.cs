@@ -25,8 +25,8 @@ public class SendScore : MonoBehaviour
 	
 	private void SendGameScore(int score)
 	{
-		string userName = "test";
-		string password = "test123";
+		string userName = DemoScene.userName;
+		string password = DemoScene.password;
 
 		//Here we will first call the auth service to grab an auth token,
 		//and then call the game score service once it returns.

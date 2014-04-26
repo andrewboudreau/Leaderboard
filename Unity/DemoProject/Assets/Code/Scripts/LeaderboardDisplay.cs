@@ -30,8 +30,8 @@ public class LeaderboardDisplay : MonoBehaviour
 		}
 		else
 		{
-			string userName = "test";
-			string password = "test123";
+			string userName = DemoScene.userName;
+			string password = DemoScene.password;
 
 			service.AuthenticateUser(userName, password, (object obj) => 
 			{ 

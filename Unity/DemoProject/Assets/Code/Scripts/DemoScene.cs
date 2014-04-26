@@ -12,6 +12,8 @@ public class DemoScene : MonoBehaviour
 
 	GameObject bugRoot;
 	private List<Bug> bugs = new List<Bug>();
+	public static string userName = "ChicagoCodeCamp";
+	public static string password = "ChicagoCodeCamp";
 
 	TextMesh scoreMesh;
 
