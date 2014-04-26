@@ -241,7 +241,9 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap.css.map" />
-    <Content Include="Areas\HelpPage\Views\Web.config" />
+    <Content Include="Areas\HelpPage\Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Areas\HelpPage\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\ResourceModel.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Index.cshtml" />
@@ -288,6 +290,7 @@
     <Content Include="Scripts\jquery-2.1.0.min.map" />
     <Content Include="Views\Home\Leaderboard.cshtml" />
     <Content Include="Views\Home\WebPlayer.cshtml" />
+    <Content Include="Content\WebPlayerBuild.unity3d" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Leaderboard.Data\Leaderboard.Data.csproj">
